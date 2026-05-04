@@ -8,6 +8,7 @@ import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { TestimonialsPage } from './components/TestimonialsPage';
 import { AccoladeForm } from './components/AccoladeForm';
+import { FadeInSection } from './components/FadeInSection';
 
 // Import your Supabase client
 import { supabase } from './supabaseClient';
@@ -102,12 +103,20 @@ export default function App() {
         <main>
           {/* FIXED: Passed accolades prop to Hero */}
           <Hero onScrollToAbout={scrollToAbout} accolades={accolades} />
-          <About />
-          <Experience />
-          <Interests />
+          <FadeInSection>
+            <About />
+          </FadeInSection>
+          <FadeInSection>
+            <Experience />
+          </FadeInSection>
+          <FadeInSection>
+            <Interests />
+          </FadeInSection>
           {/* FIXED: Passed accolades prop to Testimonials */}
           <Testimonials onViewAll={() => setCurrentView('testimonials')} accolades={accolades} />
-          <Contact />
+          <FadeInSection>
+            <Contact />
+          </FadeInSection>
         </main>
       )}
       
