@@ -107,7 +107,7 @@ export function Hero({ onScrollToAbout, accolades = [] }) {
           </h2>
           
           <p className="text-lg sm:text-xl text-slate-600 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed transition-colors">
-            8+ years of cross-functional experience in data governance, incident management and automated dashboarding.
+            8+ years of cross-functional experience in Software Development, Data Governance, Incident Management and Automation.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12 w-full sm:w-auto">

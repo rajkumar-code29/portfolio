@@ -8,30 +8,33 @@ import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { TestimonialsPage } from './components/TestimonialsPage';
 import { AccoladeForm } from './components/AccoladeForm';
-import {supabase} from './supabaseClient'; // Importing the Supabase client
+
+// Import your Supabase client
+import { supabase } from './supabaseClient';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isDarkTheme, setIsDarkTheme] = useState(true); 
   
-  // New state to act as our simple page router
+  // Router State
   const [currentView, setCurrentView] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('view') === 'invite') return 'invite';
     return 'home';
   });
 
-  // database State
+  // Database State
   const [accolades, setAccolades] = useState([]);
 
+  // Fetch from Supabase exactly once when the app loads
   useEffect(() => {
     const fetchAccolades = async () => {
-      const {data, error} = await supabase
+      const { data, error } = await supabase
         .from('accolades')
         .select('*')
         .eq('status', 'approved')
         .order('created_at', { ascending: false });
-        
+
       if (!error && data) {
         setAccolades(data);
       }
@@ -40,6 +43,7 @@ export default function App() {
     fetchAccolades();
   }, []);
 
+  // Theme logic
   useEffect(() => {
     if (isDarkTheme) {
       document.documentElement.classList.add('dark');
@@ -48,8 +52,8 @@ export default function App() {
     }
   }, [isDarkTheme]);
 
+  // Scroll tracking logic
   useEffect(() => {
-    // Only track scrolling if we are on the home page
     if (currentView !== 'home') return;
 
     const handleScroll = () => {
@@ -96,11 +100,13 @@ export default function App() {
       {/* 1. The Main Home Page */}
       {currentView === 'home' && (
         <main>
-          <Hero onScrollToAbout={scrollToAbout} />
+          {/* FIXED: Passed accolades prop to Hero */}
+          <Hero onScrollToAbout={scrollToAbout} accolades={accolades} />
           <About />
           <Experience />
           <Interests />
-          <Testimonials onViewAll={() => setCurrentView('testimonials')} />
+          {/* FIXED: Passed accolades prop to Testimonials */}
+          <Testimonials onViewAll={() => setCurrentView('testimonials')} accolades={accolades} />
           <Contact />
         </main>
       )}
@@ -108,7 +114,7 @@ export default function App() {
       {/* 2. The Full Accolades Grid Page */}
       {currentView === 'testimonials' && (
         <main>
-          {/*Pass accolades down! */}
+          {/* FIXED: Passed accolades prop to TestimonialsPage */}
           <TestimonialsPage onBack={() => setCurrentView('home')} accolades={accolades} />
         </main>
       )}
@@ -116,11 +122,9 @@ export default function App() {
       {/* 3. The Hidden Invite View */}
       {currentView === 'invite' && (
         <main>
-          {/* Form is strictly on TOP */}
           <AccoladeForm />
-          
-          {/* Social Proof (Accolades) is strictly on BOTTOM */}
-          <Testimonials onViewAll={() => setCurrentView('testimonials')} />
+          {/* FIXED: Passed accolades prop to social proof carousel underneath the form */}
+          <Testimonials onViewAll={() => setCurrentView('testimonials')} accolades={accolades} />
         </main>
       )}
     </div>
