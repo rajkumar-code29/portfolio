@@ -143,7 +143,7 @@ export function Hero({ onScrollToAbout, accolades = [] }) {
                 <Quote className="text-blue-500 mb-4 shrink-0" size={28} />
                 
                 {/* CLAMPED TEXT: Limits to 4 lines */}
-                <p className="text-slate-700 dark:text-slate-300 mb-2 leading-relaxed italic line-clamp-4">
+                <p className="text-slate-700 dark:text-slate-300 mb-2 leading-relaxed italic line-clamp-7">
                   "{testimonial.testimonial}"
                 </p>
                 
