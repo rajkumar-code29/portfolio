@@ -8,7 +8,7 @@ export function AccoladeForm() {
   const [isSubmitting, setIsSubmitting] = useState(false); // Added loading state
   const [wordCount, setWordCount] = useState(0);
   const [errorMsg, setErrorMsg] = useState(null); // Added error state
-  const WORD_LIMIT = 100;
+  const WORD_LIMIT = 500;
 
   const [formData, setFormData] = useState(() => {
     const params = new URLSearchParams(window.location.search);
