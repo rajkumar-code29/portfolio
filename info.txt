@@ -1,0 +1,29 @@
+So I have a domain rajkumar.codes, now for the testimonials page I am thinking to build a form which will seek the testimonial from people I have worked with but it should not be visible in my webpage it should be only on invite where people should be able to see, the form should match my webpage theme, so lets extend the same website but with just a hidden page only visible with the link Or do you have any suggestion?
+
+Also can you confirm -- do we need db for storing response if so what is the free version and options that I have ?
+
+Regarding the Form:
+
+One I can prefill and send to people or a generic form where they should be able to fill everything.
+
+Forms should contain:
+
+1. Name of the person
+
+2. Designation 
+
+3. Company 
+
+4. LinkedIn profile -- How can I ask people to connect securily or should we put an optional field to let them put their public profile link?
+
+5. Feedback/Testimonial about me 
+
+
+
+-- once submitted by a user, I should be able to review it and approve which should automatically be updated in my website testimonial page 
+
+
+
+Remember this will be taken as a blueprint for our Accolade project which we discussed 
+
+supa db login - sierraUMBRELLA@29@29
