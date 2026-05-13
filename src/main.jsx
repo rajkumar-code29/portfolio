@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 // Initialize Google Analytics 
-ReactGA.initialize("G-X8TV33XYWR"); // Replace with your actual Measurement ID
+ReactGA.initialize("G-X8TV33XYWR"); 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
